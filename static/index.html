@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Agent — AI Multi-Step Research Tool</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="wrap">
+
+    <div class="header">
+        <div class="badge"><span class="badge-dot"></span>Multi-Step AI Agent</div>
+        <h1>Watch an AI Agent <em>Think & Act</em><br>in Real Time</h1>
+        <p class="subtitle">Give it any topic. The agent plans sub-questions, searches the web, gathers findings into memory, then writes a final report — live, step by step.</p>
+
+        <div class="loop-diagram">
+            <div class="loop-chip">🧠 Think</div>
+            <div class="loop-arrow">→</div>
+            <div class="loop-chip">🔍 Act (search)</div>
+            <div class="loop-arrow">→</div>
+            <div class="loop-chip">🧠 Think</div>
+            <div class="loop-arrow">→</div>
+            <div class="loop-chip">📝 Act (report)</div>
+        </div>
+    </div>
+
+    <div class="setup-alert" id="setupAlert">
+        ⚠️ <strong>Server setup needed:</strong> <code>GROQ_API_KEY</code> isn't set on this server.
+        Get a free key at <strong>console.groq.com</strong>, then set it and restart the Flask app.
+    </div>
+
+    <div class="card">
+        <div class="field-label">🎯 Research Topic</div>
+        <div class="input-group">
+            <input type="text" class="topic-field" id="topicInput" placeholder="e.g. AI tools for small restaurants, remote work productivity…" />
+            <button class="btn-primary" id="runBtn" onclick="runAgent()">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                Run Agent
+            </button>
+        </div>
+        <div class="examples">
+            <span class="ex-label">Try:</span>
+            <span class="ex-pill" onclick="setExample('Benefits of automation for small businesses')">🏢 Business automation</span>
+            <span class="ex-pill" onclick="setExample('How AI agents differ from chatbots')">🤖 AI agents vs chatbots</span>
+            <span class="ex-pill" onclick="setExample('Best practices for prompt engineering')">✍️ Prompt engineering</span>
+        </div>
+    </div>
+
+    <div id="errorBox"></div>
+
+    <div id="feedSection">
+        <div class="feed-header">
+            <div class="feed-status-dot" id="statusDot"></div>
+            <div class="feed-title" id="feedTitle">Agent working...</div>
+        </div>
+
+        <div class="feed-card" id="feedCard"></div>
+
+        <div class="report-card" id="reportCard">
+            <div class="report-content" id="reportContent"></div>
+            <div class="action-bar" style="margin-top:18px">
+                <button class="btn-sec" onclick="copyReport()">📋 Copy Report</button>
+                <button class="btn-sec" onclick="downloadReport()">⬇️ Download .md</button>
+                <button class="btn-sec" onclick="resetForm()">🔄 New Topic</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="hist-section" id="histSection" style="display:none">
+        <div class="hist-title">Recent Research Topics</div>
+        <div class="hist-grid" id="histGrid"></div>
+    </div>
+
+    <div class="disclaimer">
+        <strong>🎓 Learning Note:</strong> This agent uses Groq's free Llama 3.3 API and DuckDuckGo's free search endpoint — no paid keys required. Watch the feed above to see the exact think→act→think→act loop that distinguishes an "agent" from a simple chatbot.
+    </div>
+
+</div>
+
+<script src="/static/script.js"></script>
+</body>
+</html>
