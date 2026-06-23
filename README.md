@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Research & Report Agent (Free, No Paid API)
 
 A beginner-friendly AI agent project that demonstrates the **think → decide → act**
@@ -88,3 +89,6 @@ instead of `client.chat.completions.create`, since both SDKs use a near-identica
 5. **Multi-agent**: create a second agent ("Critic Agent") that reviews the first
    agent's report and asks for revisions — this is the core idea behind more
    advanced agent frameworks like AutoGen/CrewAI.
+=======
+# Research-Report-AI-Agent
+>>>>>>> 6d640d8e8a0b61597ea31958be226b8d2029f539
